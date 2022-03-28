@@ -4,9 +4,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style.css">
+    
+    
 </head>
 <body>
-    
+    <main>
+        <nav>
+
+            <h1 class = "text-center">
+                WEATHER DASHBOARD
+            </h1>
+        </nav>
+
+
+        <section class = "container" >
+           
+            <section class="row">
+                <div class="col">
+                    <form id="form-search"><!-- Search Col  -->
+                        <h2>Search for a City</h2>
+                        <input id= "input-city" type="text" placeholder="Enter City">
+                        <button class = "btn btn-primary  btn-block"> Search</button> 
+                    </form>
+
+                    <ul>
+                        <li>Perth</li>
+                        <li>Melbourne</li>
+                    </ul>
+                    
+                </div>
+                <div class="col">
+                    <div class="card">
+                            
+                        <div class="card-body">
+                          <h4 id="today-city" class="card-title"> City:<span id="span-today-city"></span><span id="span-today-date"></span></h4>
+                          <img id = "img-today-icon">
+                          <p class="card-text">
+                            <ul>
+                                <li>Temperature: <span id="span-today-temp"></span>°C</li>
+                                <li>Wind Speed: <span id="span-today-wind"></span>km/h</li>
+                                <li>Humidity: <span id="span-today-humidity"></span>%</li>
+                                <li>UV Index: <span id="span-today-uv"></span></li>
+                                
+                            </ul>
+                          </p>
+                          
+                        </div>
+                      </div>
+                    <!--Weather Data  -->
+                    <section class="row">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                              <h4 class="card-title">27/03/21</h4>
+                              <p class="card-text">
+                                <ul>
+                                    <li>Temp</li>
+                                    <li>Wind</li>
+                                    <li>Humidity</li>
+                                    
+                                </ul>
+                              </p>
+                              
+                            </div>
+                          </div>
+                    </section>
+                    <section class="row">
+
+                      <article class="col"></article>
+                      <article class="col"></article>
+                      <article class="col"></article>
+                      <article class="col"></article>
+                      <article class="col"></article> 
+                    </section>
+
+                </div>
+            </section>
+                
+
+
+
+        </section>
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/app.js"></script>
 </body>
 </html>
