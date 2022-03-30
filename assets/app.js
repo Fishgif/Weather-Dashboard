@@ -97,21 +97,17 @@ document.getElementById('span-today-humidity').textContent = humidityToday
 // UV
 document.getElementById('span-today-uv').textContent = uvToday
 
-// Next 5 days 
-// date
-// Pic
-// temp
-// wind
-// hum
+
  })
 
 })
 
+// five day forecast
 
 let parseWeather = function(weatherText){
     let weatherJSON = JSON.parse(weatherText);
     console.log(weatherJSON);
-    let dailyforecast = weatherJSON.daily;
+    let dailyForecast = weatherData.daily;
     // console.log(dailyforecast)
 
     for (x = 0; x < dailyForecast.length; x++) {
@@ -129,6 +125,7 @@ let parseWeather = function(weatherText){
 
     }
 }
+// Add amd Display Dynamicly 
 
 let displayWeatherDay = function(dayOfWeek, dailyTemp, dailyWindSpeed, dailyHumidity){
 
@@ -141,7 +138,7 @@ document.getElementById("forecast").innerHTML += out;
 
 
 }
-
+// Calculate day of the week 
 let getDayOfWeek = function(dayNum) {
 
 var weekday = new Array (7)
