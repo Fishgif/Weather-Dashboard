@@ -30,7 +30,7 @@ function getCurrentWeatherApi(city){
 function getOneCallApi(lon, lat){
 
 
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric.`
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`
 
     return fetch(url). then(function(res){
         return res.json();
@@ -108,6 +108,56 @@ document.getElementById('span-today-uv').textContent = uvToday
 })
 
 
-// Put search city into local storage 
-// display in list (searched city)
+let parseWeather = function(weatherText){
+    let weatherJSON = JSON.parse(weatherText);
+    console.log(weatherJSON);
+    let dailyforecast = weatherJSON.daily;
+    // console.log(dailyforecast)
+
+    for (x = 0; x < dailyForecast.length; x++) {
+        let day = dailyForecast[x];
+        let today = new Date().getDay() + x;
+        if (today > 6) {
+            today = today - 7;
+        }
+        let dayOfWeek = weatherData.daily[0];
+        // Date
+        let dailyTemp = weatherData.daily.temp;
+        let dailyWindSpeed = weatherData.daily.wind_speed;
+        let dailyHumidity = weatherData.daily.humidity;
+        displayWeatherDay(dayOfWeek, dailyTemp, dailyWindSpeed, dailyHumidity )
+
+    }
+}
+
+let displayWeatherDay = function(dayOfWeek, dailyTemp, dailyWindSpeed, dailyHumidity){
+
+let out = "div class='weatherDay'>";
+out += "<h2>" + dayOfWeek + "</h2>";
+out += "<p>Temperature: " + dailyTemp + "</p>";
+out += "<p>Wind Speed: " + Math.round(dailyWindSpeed) + "</p>";
+out += "<p>Humidity: " + dailyHumidity + "</p>";
+document.getElementById("forecast").innerHTML += out;
+
+
+}
+
+let getDayOfWeek = function(dayNum) {
+
+var weekday = new Array (7)
+weekday[0] = "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
+return (weekday[dayNum])
+
+}
+
+
+
+
 
