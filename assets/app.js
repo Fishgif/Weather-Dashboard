@@ -97,6 +97,7 @@ document.getElementById('span-today-humidity').textContent = humidityToday
 // UV
 document.getElementById('span-today-uv').textContent = uvToday
 
+parseWeather(weatherData)
 
  })
 
@@ -104,40 +105,40 @@ document.getElementById('span-today-uv').textContent = uvToday
 
 // five day forecast
 
-let parseWeather = function(weatherText){
-    let weatherJSON = JSON.parse(weatherText);
-    console.log(weatherJSON);
+let parseWeather = function(weatherData){
+    // let weatherJSON = JSON.parse(weatherText);
+    // console.log(weatherJSON);
     let dailyForecast = weatherData.daily;
-    // console.log(dailyforecast)
+    console.log("daily forecast array", dailyForecast)
 
-    for (x = 0; x < dailyForecast.length; x++) {
+    for (x = 0; x < 5; x++) {
+        console.log("day", dailyForecast[x]);
         let day = dailyForecast[x];
         let today = new Date().getDay() + x;
         if (today > 6) {
             today = today - 7;
         }
-        let dayOfWeek = weatherData.daily[0];
+        let dayOfWeek = getDayOfWeek(x);
         // Date
-        let dailyTemp = weatherData.daily.temp;
-        let dailyWindSpeed = weatherData.daily.wind_speed;
-        let dailyHumidity = weatherData.daily.humidity;
+        let dailyTemp = dailyForecast[x].temp.day;
+        let dailyWindSpeed = dailyForecast[x].wind_speed;
+        let dailyHumidity = dailyForecast[x].humidity;
         displayWeatherDay(dayOfWeek, dailyTemp, dailyWindSpeed, dailyHumidity )
 
     }
 }
 // Add amd Display Dynamicly 
 
-let displayWeatherDay = function(dayOfWeek, dailyTemp, dailyWindSpeed, dailyHumidity){
+let displayWeatherDay = function (dayOfWeek, dailyTemp, dailyWindSpeed, dailyHumidity){
 
-let out = "div class='weatherDay'>";
+let out = '<div class="weatherDay">';
 out += "<h2>" + dayOfWeek + "</h2>";
-out += "<p>Temperature: " + dailyTemp + "</p>";
-out += "<p>Wind Speed: " + Math.round(dailyWindSpeed) + "</p>";
-out += "<p>Humidity: " + dailyHumidity + "</p>";
+out += "<p>Temperature: " + dailyTemp + "°C</p>";
+out += "<p>Wind Speed: " + Math.round(dailyWindSpeed) + "km/h</p>";
+out += "<p>Humidity: " + dailyHumidity + "%</p>";
 document.getElementById("forecast").innerHTML += out;
-
-
 }
+
 // Calculate day of the week 
 let getDayOfWeek = function(dayNum) {
 
@@ -154,7 +155,13 @@ return (weekday[dayNum])
 
 }
 
-
+const excuses = [];
+excuse[0]= "Im sorry but you look exaclty like my ex and I cant handle it";
+excuse[1]= "Constanly talk about your ex";
+excuse[2]= "Fake an allergic reaction";
+excuse[3]= "Behave in a way that makes your date leave first (act like a pervert)";
+excuse[4]= "Spill a drink on yourself—sacrifice your clothes to get out of the date";
+excuse[5]= "Say you hate sex";
 
 
 
