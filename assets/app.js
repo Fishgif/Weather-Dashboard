@@ -12,12 +12,12 @@ const weatherApiKey = "ab431c4fb5b9ae044a66fbe2c7cbe3d4"
 
 
 // Put the object into storage
-localStorage.setItem('form-search', JSON.stringify(searchForm));
+// localStorage.setItem('form-search', JSON.stringify(searchForm));
 
-// Retrieve the object from storage
-var retrievedObject = localStorage.getItem('form-search');
+// // Retrieve the object from storage
+// var retrievedObject = localStorage.getItem('form-search');
 
-console.log('retrievedObject: ', JSON.parse(retrievedObject));
+// console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
 
 // When I click on Button Primary the searched city is saved to local storage
@@ -81,7 +81,16 @@ searchForm.addEventListener('submit', function(event){
 event.preventDefault();
 // when teh user enters a city 
 const userInput = document.getElementById('input-city').value;
+var searchHistory = JSON.parse(localStorage.getItem('form-search')) || [];
+searchHistory.push(userInput)
+console.log (searchHistory)
 
+
+
+
+localStorage.setItem('form-search', JSON.stringify(searchHistory))
+// Store Local Searches
+localStorage.setItem('form-search', JSON.stringify(searchForm));
  getWeather(userInput)
  .then(function(weatherData){
     // data for today:
@@ -114,6 +123,7 @@ document.getElementById('span-today-humidity').textContent = humidityToday
 document.getElementById('span-today-uv').textContent = uvToday
 
 parseWeather(weatherData)
+
 
  })
 
