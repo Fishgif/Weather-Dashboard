@@ -13,6 +13,7 @@
     float: left;
     margin-left: 10px;
     display: inline
+    flex
     
   }
 .col{

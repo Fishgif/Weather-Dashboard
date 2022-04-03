@@ -6,9 +6,25 @@
 
 const weatherApiKey = "ab431c4fb5b9ae044a66fbe2c7cbe3d4"
 
-// call weather api to retrive data 
+// Saves Searches
 
-// wather data by city name https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+// set to local storage item
+
+
+// Put the object into storage
+localStorage.setItem('form-search', JSON.stringify(searchForm));
+
+// Retrieve the object from storage
+var retrievedObject = localStorage.getItem('form-search');
+
+console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+
+// When I click on Button Primary the searched city is saved to local storage
+
+// The Recent searches are displayed in the recent search list 
+
+
 
 // call current weather API
 
@@ -155,13 +171,6 @@ return (weekday[dayNum])
 
 }
 
-const excuses = [];
-excuse[0]= "Im sorry but you look exaclty like my ex and I cant handle it";
-excuse[1]= "Constanly talk about your ex";
-excuse[2]= "Fake an allergic reaction";
-excuse[3]= "Behave in a way that makes your date leave first (act like a pervert)";
-excuse[4]= "Spill a drink on yourself—sacrifice your clothes to get out of the date";
-excuse[5]= "Say you hate sex";
 
 
 
