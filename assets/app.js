@@ -4,8 +4,8 @@
 
 
 
-const weatherApiKey = "ab431c4fb5b9ae044a66fbe2c7cbe3d4"
-
+// const weatherApiKey = "ab431c4fb5b9ae044a66fbe2c7cbe3d4"
+const weatherApiKey = "fab29c92ec01ada5bf2e365a936b9378"
 // Saves Searches
 
 // set to local storage item
@@ -66,10 +66,10 @@ function getWeather(city){
 
 }
 
-getWeather('Perth')
-.then(function (data){
-    console.log(data);
-})
+// getWeather('Perth')
+// .then(function (data){
+//     console.log(data);
+// })
 const searchForm = document.getElementById ('form-search');
 
 function iconCodeToPic(iconCode){
@@ -79,18 +79,18 @@ return `http://openweathermap.org/img/wn/${iconCode}@2x.png`
 
 searchForm.addEventListener('submit', function(event){
 event.preventDefault();
-// when teh user enters a city 
+// when the user enters a city 
 const userInput = document.getElementById('input-city').value;
 var searchHistory = JSON.parse(localStorage.getItem('form-search')) || [];
 searchHistory.push(userInput)
-console.log (searchHistory)
+
 
 
 
 
 localStorage.setItem('form-search', JSON.stringify(searchHistory))
-// Store Local Searches
-localStorage.setItem('form-search', JSON.stringify(searchForm));
+
+
  getWeather(userInput)
  .then(function(weatherData){
     // data for today:
@@ -144,7 +144,7 @@ let parseWeather = function(weatherData){
         if (today > 6) {
             today = today - 7;
         }
-        let dayOfWeek = getDayOfWeek(x);
+        let dayOfWeek = getDayOfWeek(today + 1);
         // Date
         let dailyTemp = dailyForecast[x].temp.day;
         let dailyWindSpeed = dailyForecast[x].wind_speed;
@@ -181,6 +181,17 @@ return (weekday[dayNum])
 
 }
 
+// Save Local Storage results
 
+var searchResults = JSON.parse(localStorage.getItem('form-search')) || []
+console.log(searchResults)
+for (let i = 0; i< searchResults.length; i++) {
+var btn = document.createElement('button')
+btn.classList.add('history-button')
+btn.textContent = searchResults[i]
+var li = document.createElement('li')
+li.appendChild(btn)
 
+document.getElementById("search-history").appendChild(li)
+    }
 

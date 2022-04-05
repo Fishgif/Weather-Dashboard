@@ -26,4 +26,32 @@
 
 }
 
+.history-button{
+    width: 100%; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: left;
+   border-radius: 5px;
+   font-size: 17px;
+  
+
+}
+
+#search-history>li{
+    list-style-type: none;
+    width: 100%;
+}
+
+.btn-btn-primary-btn-block{
+    margin-top: 5px;
+
+}
+
+#input-city{
+    margin-bottom: 5px;
+
+}
+.col{
+    width: 100%;
+}
   
