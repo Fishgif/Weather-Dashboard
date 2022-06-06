@@ -29,7 +29,8 @@ const weatherApiKey = "fab29c92ec01ada5bf2e365a936b9378"
 // call current weather API
 
 function getCurrentWeatherApi(city){
-
+    
+    document.getElementById("forecast").innerHTML = ''
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}&units=metric`;
        
         return fetch(url)
